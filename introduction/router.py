@@ -44,8 +44,8 @@ builder.add_node("tools", ToolNode(tools))
 builder.add_edge(START, "tool_calling_llm")
 builder.add_conditional_edges(
     "tool_calling_llm",
-    # If the latest message (result) from assistant is a tool call -> tools_condition routes to tools
-    # If the latest message (result) from assistant is a not a tool call -> tools_condition routes to END
+    # If the latest message (result) from tool_calling_llm is a tool call -> tools_condition routes to tools
+    # If the latest message (result) from tool_calling_llm is a not a tool call -> tools_condition routes to END
     tools_condition,
 )
 builder.add_edge("tools", END)
